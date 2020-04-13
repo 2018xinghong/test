@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>横竖屏检测</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			html, body, #box {
+				width: 100%;
+				height: 100%;
+			}
+			.btns {
+				position: fixed;
+				top: 20px;
+				left: 20px;
+			}
+			/* 横屏-ipad */
+			.landscape {
+				background: orange;
+			}
+			/* 竖屏-ipad */
+			.portrait {
+				background: skyblue;
+			}
+			/* 横屏-Android */
+			.lds {
+				background: blueviolet;
+			}
+			/* 竖屏-Android */
+			.ptt {
+				background: greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="" id="box"></div>
+		<div class="btns">
+			<a href="./home.html">orientation属性方法</a><br><br>
+			<a href="./home2.html">长宽比方法</a>
+		</div>
+		<script src="./jquery-3.1.1.min.js"></script>
+		<script>
+			var updateOrientation = function() {
+				var userAgentInfo = navigator.userAgent.toLocaleLowerCase();
+				console.log(userAgentInfo);
+				if(userAgentInfo.indexOf("ipad") != -1 || userAgentInfo.indexOf("android") != -1) {
+					alert("ipad or android");
+					// ipad android
+					var width = $(window).width();
+					var height = $(window).height();
+					var orientation = "";
+					if(width > height) {
+						// 横屏
+						orientation = "landscape";
+						console.log("横屏");
+					}else {
+						// 竖屏
+						console.log("竖屏");
+						orientation = "portrait";
+					}
+					$("#box").attr("class", orientation);
+				}else {
+					// pc
+					alert("pc");
+					$(".box").attr("class", "box");
+				}
+			}
+			var init = function() {
+				updateOrientation();
+				//监听resize事件
+				window.addEventListener('resize',updateOrientation,false);
+			}
+			window.addEventListener('DOMContentLoaded',init,false);
+			
+		</script>
+	</body>
+</html>
