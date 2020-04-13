@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>横竖屏检测-orientation</title>
+</head>
+<body>
+	<div class="" id="box"></div>
+	<div class="btns">
+		<a href="./index.html">orientation属性方法</a><br><br>
+		<a href="./home2.html">长宽比方法</a>
+	</div>
+	<script src="./jquery-3.1.1.min.js"></script>
+	<script>
+		var updateOrientation = function() {
+			var userAgentInfo = navigator.userAgent.toLocaleLowerCase();
+			// console.log(userAgentInfo);
+			console.log(userAgentInfo.indexOf("ipad"));
+			if(userAgentInfo.indexOf("ipad") != -1) {
+				alert("ipad");
+				// ipad
+				if (window.orientation == 90 || window.orientation == -90) {
+					// iPad横屏
+					$("#box").attr("class", "landscape");
+					console.log("iPad-横屏");
+					// alert("iPad-横屏");
+				} else if (window.orientation == 0 || window.orientation == 180) {
+					// iPad竖屏
+					$("#box").attr("class", "portrait");
+					console.log("iPad-竖屏");
+					// alert("iPad-竖屏");
+				}
+			}else if(userAgentInfo.indexOf("android") != -1) {
+				// android
+				alert("android");
+				if (window.orientation == 90 || window.orientation == -90) {
+					// Andriod横屏
+					$("#box").attr("class", "lds");
+					console.log("Andriod-横屏");
+					// alert("Andriod-横屏");
+				} else if (window.orientation == 0 || window.orientation == 180) {
+					// Andriod竖屏
+					$("#box").attr("class", "ptt");
+					console.log("Andriod-竖屏");
+					// alert("Andriod-竖屏");
+				}
+			}else {
+				// pc
+				alert("pc");
+				$("#box").attr("class", "box");
+				console.log("pc")
+			}
+		}
+		var init = function() {
+			updateOrientation();
+			//监听resize事件
+			window.addEventListener('resize',updateOrientation,false);
+		}
+		window.addEventListener('DOMContentLoaded',init,false);
+	</script>
+</body>
+</html>
