@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+		<title>考勤详情</title>
+		<link rel="stylesheet" href="../../css/weui.css"/>
+		<link rel="stylesheet" href="../../css/example.css"/>
+		<link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+		<style>
+			html, body {
+				font-size: 15px;
+			}
+			/* 部门考勤 */
+			.dept-condtion {
+				height: 39px;
+				line-height: 39px;
+				background: #fff;
+				overflow: hidden;
+			}
+			.dept-condtion .weui-flex__item {
+				padding-left: 50px;
+				color: #333;
+			}
+			.dept-condtion .weui-flex__item i {
+				margin-left: 4px;
+				font-size: 12px;
+			}
+			.dept-content {
+				margin: 10px 0;
+				padding: 0 12px;
+				width: 100%;
+				background: #fff;
+				box-sizing: border-box;
+			}
+			.dept-title {
+				height: 32px;
+				line-height: 32px;
+				border-bottom: 1px solid #F0F0F0;
+			}
+			.dept-title .title-text {
+				float: left;
+				color: #000;
+			}
+			.dept-title .title-text i {
+				margin-right: 4px;
+				color: #F5AA2F;
+			}
+			.dept-title .title-num {
+				float: right;
+				color: #F5AA2F;
+			}
+			
+			/* 部门人员 */
+			/* tabs */
+			.weui-navbar {
+				box-shadow:0px 3px 4px 0px rgba(153,153,153,0.4);
+			}
+			.weui-navbar__item {
+				padding: 0;
+				height: 49px;
+				color: #666666;
+				line-height: 49px;
+				font-size: 16px;
+				background: #fff;
+			}
+			.weui-navbar__item:after {
+				display: none;
+			}
+			.weui-navbar__item.weui-bar__item_on {
+				color: #4378BE;
+				font-weight: 700;
+				border-bottom: 2px solid #4378BE;
+				background: #fff;
+			}
+			/* 搜索 */
+			.weui-search-bar {
+				padding: 12px;
+				background: #fff;
+			}
+			.weui-search-bar:after {
+				display: none;
+			}
+			.weui-search-bar__form {
+				color: #999;
+				border-radius: 32px;
+			}
+			.weui-search-bar__label {
+				background: #F2F2F2;
+				border-radius: 32px;
+			}
+			.weui-search-bar__box .weui-icon-search,
+			.weui-search-bar__box .weui-search-bar__input {
+				padding: 0;
+				height: 32px;
+				line-height: 32px;
+			}
+			.weui-search-bar__cancel-btn {
+				line-height: 32px;
+			}
+			.weui-search-bar__form:after {
+				display: none;
+			}
+			.weui-search-bar_focusing .weui-search-bar__form:after {
+				border: 1px solid #ddd;
+			}
+			.weui-search-bar_focusing .weui-search-bar__box {
+				background: #F2F2F2;
+			}
+			/* 人员列表 */
+			.card-list {
+				padding: 0 12px;
+			}
+			.card-list .weui-panel {
+				margin: 0 0 25px;
+			}
+			.card-list .weui-panel:before,
+			.card-list .weui-panel:after {
+				display: none;
+			}
+			.card-list a.weui-media-box {
+				padding: 0 20px;
+				background: url(../../img/card-bg.png) no-repeat center /100% 100%;
+				border-radius: 10px;
+			}
+			.card-list .weui-media-box__hd img {
+				border-radius: 50%;
+			}
+			.card-list .weui-media-box__desc i,
+			.card-list .weui-media-box__desc span {
+				margin-right: 4px;
+				color: #fff;
+				font-size: 15px;
+				vertical-align: middle;
+			}
+			.card-list .weui-media-box__bd .weui-media-box__desc:nth-child(2) {
+				margin: 5px 0;
+			}
+			.card-list .weui-media-box_appmsg {
+				flex-direction: column;
+			}
+			.card-list .card-top {
+				padding: 15px 0;
+				width: 100%;
+				border-bottom: 1px solid #ccc;
+			}
+			.card-list .card-bottom {
+				padding: 10px 0;
+				width: 100%;
+				color: #fff;
+				font-size: 12px;
+				text-align: center;
+			}
+			.card-list .weui-flex {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container attendance-detail" id="container">
+			<div class="weui-tab" id="tab">
+			    <div class="weui-navbar">
+			        <div class="weui-navbar__item">部门考勤</div>
+			        <div class="weui-navbar__item">部门人员</div>
+			    </div>
+			    <div class="weui-tab__panel">
+			        <div class="weui-tab__content">
+						<div class="dept-condtion">
+							<div class="weui-flex">
+								<div class="weui-flex__item" id="deptDept"><div class="placeholder">
+									<span>研发部</span><i class="iconfont icon-down"></i>
+								</div></div>
+								<div class="weui-flex__item" id="deptTime"><div class="placeholder">
+									<span>近一周</span><i class="iconfont icon-down"></i>
+								</div></div>
+							</div>
+						</div>
+						<div class="dept-content">
+							<div class="dept-title">
+								<span class="title-text"><i class="iconfont icon-shouzhi"></i>考勤人数</span>
+								<span class="title-num">19人</span>
+							</div>
+							<div class="dept-normal">
+								
+							</div>
+						</div>
+					</div>
+			        <div class="weui-tab__content">
+						<!-- 搜索框 -->
+						<div class="weui-search-bar" id="searchBarPerson">
+						    <form class="weui-search-bar__form">
+						        <div class="weui-search-bar__box">
+						            <i class="weui-icon-search"></i>
+						            <input type="search" class="weui-search-bar__input" placeholder="搜索" required="">
+						            <a href="javascript:" class="weui-icon-clear"></a>
+						        </div>
+						        <label class="weui-search-bar__label">
+						            <i class="weui-icon-search"></i>
+						            <span>搜索</span>
+						        </label>
+						    </form>
+						    <a href="javascript:" class="weui-search-bar__cancel-btn">取消</a>
+						</div>
+						<div class="card-list">
+							<div class="weui-panel weui-panel_access">
+								
+								<div class="weui-panel__bd">
+									<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+										<div class="card-top weui-flex">
+											<div class="weui-media-box__hd">
+												<img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+											</div>
+											<div class="weui-media-box__bd">
+												<p class="weui-media-box__desc">
+													<label>
+														<i class="iconfont icon-single-person"></i><span>姓名:</span>
+													</label>
+													<span>谢朝阳</span>
+												</p>
+												<p class="weui-media-box__desc">
+													<label>
+														<i class="iconfont icon-renyuan"></i><span>部门:</span>
+													</label>
+													<span>研发部</span>
+												</p>
+												<p class="weui-media-box__desc">
+													<label>
+														<i class="iconfont icon-zhengjian"></i><span>岗位:</span>
+													</label>
+													<span>JAVA开发</span>
+												</p>
+											</div>
+										</div>
+										<div class="card-bottom">
+											<div class="weui-flex">
+												<div class="weui-flex__item"><div class="placeholder">
+													<div>20</div>
+													<div>正常考勤</div>
+												</div></div>
+												<div class="weui-flex__item"><div class="placeholder">
+													<div>20</div>
+													<div>请假天数</div>
+												</div></div>
+												<div class="weui-flex__item"><div class="placeholder">
+													<div>20</div>
+													<div>出差天数</div>
+												</div></div>
+												<div class="weui-flex__item"><div class="placeholder">
+													<div>20</div>
+													<div>加班时长</div>
+												</div></div>
+											</div>
+										</div>
+									</a>
+									
+								</div>
+								
+							</div>
+							<div class="weui-panel weui-panel_access">
+								<div class="weui-panel__bd">
+									<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+										<div class="card-top weui-flex">
+											<div class="weui-media-box__hd">
+												<img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+											</div>
+											<div class="weui-media-box__bd">
+												<p class="weui-media-box__desc">
+													<label>
+														<i class="iconfont icon-single-person"></i><span>姓名:</span>
+													</label>
+													<span>谢朝阳</span>
+												</p>
+												<p class="weui-media-box__desc">
+													<label>
+														<i class="iconfont icon-renyuan"></i><span>部门:</span>
+													</label>
+													<span>研发部</span>
+												</p>
+												<p class="weui-media-box__desc">
+													<label>
+														<i class="iconfont icon-zhengjian"></i><span>岗位:</span>
+													</label>
+													<span>JAVA开发</span>
+												</p>
+											</div>
+										</div>
+										<div class="card-bottom">
+											<div class="weui-flex">
+												<div class="weui-flex__item"><div class="placeholder">
+													<div>20</div>
+													<div>正常考勤</div>
+												</div></div>
+												<div class="weui-flex__item"><div class="placeholder">
+													<div>20</div>
+													<div>请假天数</div>
+												</div></div>
+												<div class="weui-flex__item"><div class="placeholder">
+													<div>20</div>
+													<div>出差天数</div>
+												</div></div>
+												<div class="weui-flex__item"><div class="placeholder">
+													<div>20</div>
+													<div>加班时长</div>
+												</div></div>
+											</div>
+										</div>
+									</a>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+			    </div>
+			</div>
+		</div>
+		
+	</body>
+	<script src="../../js/zepto.min.js"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+	<script src="../../js/example.js"></script>
+	<script>
+		// tab切换
+		weui.tab('#tab',{
+		    defaultIndex: 0,
+		    onChange: function(index){
+		        console.log(index);
+				if(index == 0) {
+					$(".weui-tab__panel").css("background", "#F3F3F3");
+				}else {
+					$(".weui-tab__panel").css("background", "#fff");
+				}
+		    }
+		});
+		// 部门选择, 时间选择
+		$('#deptDept').on('click', function () {
+				var deptList = [{
+		            label: '研发部',
+		            value: 0
+		        }, {
+		            label: '行政部',
+		            value: 1
+		        }, {
+		            label: '市场部',
+		            value: 2
+		        },{
+		            label: '财务部',
+		            value: 3
+		        }]
+		        weui.picker(deptList, {
+					defaultValue: [0],
+		            onChange: function (result) {
+		                // console.log(result);
+		            },
+		            onConfirm: function (result) {
+		                console.log(result);
+						$('#deptDept span').text(result[0].label);
+		            },
+		            title: '选择部门'
+		        });
+		});
+		$('#deptTime').on('click', function () {
+				var deptList = [{
+		            label: '近一周',
+		            value: 0
+		        }, {
+		            label: '近一个月',
+		            value: 1
+		        }, {
+		            label: '近三个月',
+		            value: 2
+		        },{
+		            label: '近半年',
+		            value: 3
+		        }]
+		        weui.picker(deptList, {
+					defaultValue: [0],
+		            onChange: function (result) {
+		                // console.log(result);
+		            },
+		            onConfirm: function (result) {
+		                console.log(result);
+						$('#deptTime span').text(result[0].label);
+		            },
+		            title: '选择时间范围'
+		        });
+		});
+		
+		// 搜索
+		weui.searchBar('#searchBarAttendance');
+		weui.searchBar('#searchBarPerson');
+	</script>
+</html>
