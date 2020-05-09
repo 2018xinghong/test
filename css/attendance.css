@@ -11,6 +11,11 @@
 .card-list .weui-panel:after {
 	display: none;
 }
+.card-list .weui-panel__bd {
+	background-image: linear-gradient(to right, #45A9FE, #6845FE);
+	border-radius: 5px;
+	overflow: hidden;
+}
 .card-list a.weui-media-box {
 	padding: 0 20px;
 	background: url(../img/card-bg.png) no-repeat center /100% 100%;
@@ -75,6 +80,10 @@
 	font-weight: 700;
 	border-bottom: 2px solid #4378BE;
 	background: #fff;
+}
+.adc-total .weui-tab__content {
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 /* 部门考勤 */
 .adc-total .dept-condtion {
@@ -259,10 +268,15 @@
 	background: #F3F3F3;
 }
 .adc-dept .picker-time {
+	width: 100%;
 	height: 40px;
 	line-height: 40px;
 	text-align: center;
 	background: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 20;
 }
 .adc-dept .picker-time span {
 	display: inline-block;
@@ -278,11 +292,22 @@
 	font-size: 12px;
 }
 .adc-dept .dividing-line {
-	color: #E4E4E4;
+	line-height: 40px;
+}
+.adc-dept .dividing-line span {
+	display: inline-block;
+	width: 20px;
+	height: 1px;
+	background: #E4E4E4;
+	vertical-align: middle;
 }
 .adc-dept .person-list {
-	padding: 10px 12px;
+	width: 100%;
+	height: 100%;
+	padding: 40px 12px 10px;
 	box-sizing: border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 .adc-dept .person-list a {
 	display: block;
@@ -426,6 +451,8 @@
 .adc-record.container {
 	padding: 0 12px;
 	background: #F3F3F3;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 .adc-record .record-list .record-item {
 	margin: 14px 0 0;
