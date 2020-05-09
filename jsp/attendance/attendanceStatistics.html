@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
-		<title>考勤-详情</title>
+		<title>考勤-统计</title>
 		<link rel="stylesheet" href="../../css/weui.css"/>
 		<link rel="stylesheet" href="../../css/example.css"/>
 		<link rel="stylesheet" href="../../css/iconfont/iconfont.css">
@@ -226,7 +226,7 @@
 		</style> -->
 	</head>
 	<body>
-		<div class="container adc-detail" id="container">
+		<div class="container adc-detail adc-statistics" id="container">
 			<div class="card-list">
 				<div class="weui-panel">
 					<div class="weui-panel__bd">
@@ -254,26 +254,12 @@
 										</label>
 										<span>JAVA开发</span>
 									</p>
-								</div>
-							</div>
-							<div class="card-bottom">
-								<div class="weui-flex">
-									<div class="weui-flex__item"><div class="placeholder">
-										<div>20</div>
-										<div>正常考勤</div>
-									</div></div>
-									<div class="weui-flex__item"><div class="placeholder">
-										<div>20</div>
-										<div>请假天数</div>
-									</div></div>
-									<div class="weui-flex__item"><div class="placeholder">
-										<div>20</div>
-										<div>出差天数</div>
-									</div></div>
-									<div class="weui-flex__item"><div class="placeholder">
-										<div>20</div>
-										<div>加班时长</div>
-									</div></div>
+									<p class="weui-media-box__desc">
+										<label>
+											<i class="iconfont icon-chengshi1"></i><span>城市:</span>
+										</label>
+										<span>北京</span>
+									</p>
 								</div>
 							</div>
 						</a>
@@ -377,12 +363,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div class="weui-footer weui-footer_fixed-bottom">
-				<p class="weui-footer__links">
-					<a href="./signInStatistics.html" class="weui-footer__link"><img src="../../img/statistics.png" alt="">考勤统计</a>
-				</p>
 			</div>
 			<div class="js_dialog" id="iosDialog2" style="opacity: 0; display: none;">
 				<div class="weui-mask"></div>

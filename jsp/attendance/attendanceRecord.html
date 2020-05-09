@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+		<title>考勤-记录</title>
+		<link rel="stylesheet" href="../../css/weui.css"/>
+		<link rel="stylesheet" href="../../css/example.css"/>
+		<link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+		<link rel="stylesheet" href="../../css/attendance.css">
+		<!-- <style>
+			.adc-record.container {
+				padding: 0 12px;
+				background: #F3F3F3;
+			}
+			.adc-record .record-list .record-item {
+				margin: 14px 0 0;
+				width: 100%;
+				height: 60px;
+				background: #fff;
+				box-sizing: border-box;
+				border-radius: 5px;
+				overflow: hidden;
+			}
+			.adc-record .weui-cell {
+				padding: 0;
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			.adc-record .weui-cell:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				opacity: 0.4;
+			}
+			.adc-record .record-list .weui-cell__hd {
+				width: 80px;
+				height: 100%;
+				line-height: 60px;
+				text-align: center;
+				position: relative;
+			}
+			.adc-record .weui-cell__hd:before {
+				content: "";
+				position: absolute;
+				top: -7px;
+				right: -7px;
+				width: 14px;
+				height: 14px;
+				background: #F3F3F3;
+				border-radius: 50%;
+			}
+			.adc-record .weui-cell__hd:after {
+				content: "";
+				position: absolute;
+				bottom: -7px;
+				right: -7px;
+				width: 14px;
+				height: 14px;
+				background: #F3F3F3;
+				border-radius: 50%;
+			}
+			.adc-record .record-list .weui-cell__bd {
+				padding: 0 20px 0 10px;
+			}
+			.adc-record .record-tag {
+				display: inline-block;
+				width: 40px;
+				height: 16px;
+				line-height: 16px;
+				text-align: center;
+				font-size: 12px;
+				border: 1px solid #ccc;
+				border-radius: 8px;
+			}
+			.adc-record .record-normal .weui-cell:after {
+				background: url(../../img/normal.png) no-repeat right 20px center/ auto 60%;
+			}
+			.adc-record .record-normal .record-tag {
+				color: #3EB5AB;
+				border-color: #3EB5AB;
+			}
+			.adc-record .record-late .weui-cell:after {
+				background: url(../../img/late.png) no-repeat right 15px center/ auto 60%;
+			}
+			.adc-record .record-late .record-tag {
+				color: #F95314;
+				border-color: #F95314;
+			}
+			.adc-record .record-leave .weui-cell:after {
+				background: url(../../img/leave.png) no-repeat right 15px center/ auto 60%;
+			}
+			.adc-record .record-leave .record-tag {
+				color: #076AFF;
+				border-color: #076AFF;
+			}
+			.adc-record .record-field .weui-cell:after {
+				background: url(../../img/field.png) no-repeat right 20px center/ auto 60%;
+			}
+			.adc-record .record-field .record-tag {
+				color: #6164F8;
+				border-color: #6164F8;
+			}
+			.adc-record .record-list .record-travel {
+				height: 73px;
+			}
+			.adc-record .record-travel .weui-cell__hd {
+				line-height: 73px;
+			}
+			.adc-record .record-travel .weui-cell:after {
+				background: url(../../img/travel.png) no-repeat right 15px center/ auto 60%;
+			}
+			.adc-record .record-travel .record-tag {
+				color: #49AFF4;
+				border-color: #49AFF4;
+			}
+			.adc-record .record-absence .weui-cell:after {
+				background: url(../../img/absence.png) no-repeat right 15px center/ auto 60%;
+			}
+			.adc-record .record-absence .record-tag {
+				color: #F4505D;
+				border-color: #F4505D;
+			}
+			.adc-record .record-list .weui-cell__bd .record-time {
+				font-size: 13px;
+				color: #666;
+			}
+			.adc-record .record-list .weui-cell__bd .record-text {
+				font-size: 14px;
+				line-height: 16px;
+				color: #333;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+			}
+		</style> -->
+	</head>
+	<body>
+		<div class="container adc-record" id="container">
+			<div class="record-list">
+				<div class="record-item record-late">
+					<div class="weui-cell weui-cell_active">
+						<div class="weui-cell__hd">
+							<span class="record-tag">迟到</span>
+						</div>
+						<div class="weui-cell__bd">
+							<div class="record-time"><span>2020-04-01</span><span>09:45</span></div>
+							<div class="record-text">迟到75分钟</div>
+						</div>
+					</div>
+				</div>
+				<div class="record-item record-field">
+					<div class="weui-cell weui-cell_active">
+						<div class="weui-cell__hd">
+							<span class="record-tag">外勤</span>
+						</div>
+						<div class="weui-cell__bd">
+							<div class="record-time"><span>2020-04-01</span><span>09:45</span></div>
+							<div class="record-text">外勤地点：北京市石景山远洋时代</div>
+						</div>
+					</div>
+				</div>
+				<div class="record-item record-travel">
+					<div class="weui-cell weui-cell_active">
+						<div class="weui-cell__hd">
+							<span class="record-tag">出差</span>
+						</div>
+						<div class="weui-cell__bd">
+							<div class="record-time"><span>2020-04-01</span><span>09:45</span></div>
+							<div class="record-text">出差地点：云南省大理市莫地方莫地方莫地方莫地方莫地方莫地方</div>
+						</div>
+					</div>
+				</div>
+				<div class="record-item record-travel">
+					<div class="weui-cell weui-cell_active">
+						<div class="weui-cell__hd">
+							<span class="record-tag">出差</span>
+						</div>
+						<div class="weui-cell__bd">
+							<div class="record-time"><span>2020-04-01</span><span>09:45</span></div>
+							<div class="record-text">出差地点：云南省大理市莫地方莫地方莫地方莫地方莫地方莫地方莫地方莫地方莫地方莫地方莫地方</div>
+						</div>
+					</div>
+				</div>
+				<div class="record-item record-leave">
+					<div class="weui-cell weui-cell_active">
+						<div class="weui-cell__hd">
+							<span class="record-tag">请假</span>
+						</div>
+						<div class="weui-cell__bd">
+							<div class="record-time"><span>2020-04-01</span><span>09:45</span></div>
+							<div class="record-text">病假</div>
+						</div>
+					</div>
+				</div>
+				<div class="record-item record-absence">
+					<div class="weui-cell weui-cell_active">
+						<div class="weui-cell__hd">
+							<span class="record-tag">缺勤</span>
+						</div>
+						<div class="weui-cell__bd">
+							<div class="record-time"><span>2020-04-01</span><span>09:45</span></div>
+							<div class="record-text">缺勤半天</div>
+						</div>
+					</div>
+				</div>
+				<div class="record-item record-normal">
+					<div class="weui-cell weui-cell_active">
+						<div class="weui-cell__hd">
+							<span class="record-tag">正常</span>
+						</div>
+						<div class="weui-cell__bd">
+							<div class="record-time"><span>2020-04-01</span><span>09:45</span></div>
+							<div class="record-text">正常打卡</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+	<script src="../../js/zepto.min.js"></script>
+	<script src="../../js/weui.min.js"></script>
+	<script>
+		
+	</script>
+</html>

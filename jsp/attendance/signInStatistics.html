@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+		<title>考勤-签到统计</title>
+		<link rel="stylesheet" href="../../css/weui.css"/>
+		<link rel="stylesheet" href="../../css/example.css"/>
+		<link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+		<link rel="stylesheet" href="../../css/attendance.css">
+		<style>
+			.statistics-card {
+				margin: 10px 12px;
+				background: #fff;
+				border-radius: 5px;
+			}
+			.weui-flex {
+				margin: 0 15px;
+				height: 32px;
+				color: #4378BE;
+				line-height: 32px;
+				font-size: 14px;
+				text-align: center;
+				border-bottom: 1px solid #4378BE;
+			}
+			.weui-flex .iconfont {
+				font-size: 12px;
+			}
+			.page__bd_spacing {
+				overflow: hidden;
+			}
+			.weui-progress {
+				float: left;
+				flex-direction: column;
+				width: 12.5%;
+				height: 222px;
+				font-size: 11px;
+			}
+			.weui-progress__bar {
+				margin-top: 25px;
+				width: 8px;
+				border-radius: 8px;
+				background: #E7E7E7;
+				overflow: hidden;
+				position: relative;
+			}
+			.weui-progress__bar .js_progress {
+				width: 100%;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #4378BE;
+			}
+			.num {
+				margin-top: 5px;
+				height: 16px;
+				line-height: 16px;
+				color: #4378BE;
+			}
+			.text {
+				margin-bottom: 10px;
+				height: 16px;
+				line-height: 16px;
+				color: #999999;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container adc-sigin-in" id="container">
+			<div class="statistics-card">
+				<div class="weui-flex">
+					<div class="weui-flex__item" id="choseYear"><div class="placeholder"><span>2020年</span><i class="iconfont icon-down1"></i></div></div>
+					<div class="weui-flex__item" id="choseMonth"><div class="placeholder"><span>04月</span><i class="iconfont icon-down1"></i></div></div>
+				</div>
+				<div class="page__bd page__bd_spacing">
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="height: 80%;"></div>
+						</div>
+						<div class="num">20</div>
+						<div class="text">正常</div>
+					</div>
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="height: 80%;"></div>
+						</div>
+						<div class="num">20</div>
+						<div class="text">请假</div>
+					</div>
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="height: 80%;"></div>
+						</div>
+						<div class="num">20</div>
+						<div class="text">迟到</div>
+					</div>
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="height: 80%;"></div>
+						</div>
+						<div class="num">20</div>
+						<div class="text">出差</div>
+					</div>
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="height: 80%;"></div>
+						</div>
+						<div class="num">20</div>
+						<div class="text">外勤</div>
+					</div>
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="height: 80%;"></div>
+						</div>
+						<div class="num">20</div>
+						<div class="text">旷工</div>
+					</div>
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="height: 80%;"></div>
+						</div>
+						<div class="num">20</div>
+						<div class="text">早退</div>
+					</div>
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="height: 80%;"></div>
+						</div>
+						<div class="num">20</div>
+						<div class="text">补打卡</div>
+					</div>
+					
+					
+				</div>
+				
+			</div>
+		</div>
+	</body>
+	<script src="../../js/zepto.min.js"></script>
+	<script src="../../js/weui.min.js"></script>
+	<script>
+		$("#choseYear").on("click", function() {
+			var currDate = new Date();
+			var year = currDate.getFullYear();
+			var defaultYear = year;
+			weui.picker([
+			{
+				label: year+'年',
+				value: year,
+			},
+			{
+				label: (year-1)+'年',
+				value: year-1
+			},
+			{
+				label: (year-2)+'年',
+				value: year-2
+			},
+			{
+				label: (year-3)+'年',
+				value: year-3
+			},
+			{
+				label: (year-4)+'年',
+				value: year-4
+			}
+			], {
+			   className: 'custom-classname',
+			   container: 'body',
+			   defaultValue: [defaultYear],
+			   onConfirm: function (result) {
+				   console.log(result)
+				   $("#choseYear span").text(result[0].label);
+			   }
+			});
+		})
+		$("#choseMonth").on("click", function() {
+			var defaultMonth = 1;
+			weui.picker([
+			{
+				label: '01月',
+				value: 1,
+			},
+			{
+				label: '02月',
+				value: 2,
+			},
+			{
+				label: '03月',
+				value: 3,
+			},
+			{
+				label: '04月',
+				value: 4,
+			},
+			{
+				label: '05月',
+				value: 5,
+			},
+			{
+				label: '06月',
+				value: 6,
+			},
+			{
+				label: '07月',
+				value: 7,
+			},
+			{
+				label: '08月',
+				value: 8,
+			},
+			{
+				label: '09月',
+				value: 9,
+			},
+			{
+				label: '10月',
+				value: 10,
+			},
+			{
+				label: '11月',
+				value: 11,
+			},
+			{
+				label: '12月',
+				value: 12,
+			}
+			], {
+			   className: 'custom-classname',
+			   container: 'body',
+			   defaultValue: [defaultMonth],
+			   onConfirm: function (result) {
+				   console.log(result)
+				   $("#choseMonth span").text(result[0].label);
+			   }
+			});
+		})
+	</script>
+</html>
