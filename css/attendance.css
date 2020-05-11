@@ -2,6 +2,9 @@
 html, body {
 	font-family: "PingFang-SC-Medium";
 }
+body { 
+	padding-bottom: env(safe-area-inset-bottom);
+}
 /* 人员卡片列表 */
 .card-list {
 	padding: 0 12px;
@@ -45,6 +48,8 @@ html, body {
 	padding: 12.5px 0;
 	width: 100%;
 	border-bottom: 1px solid #ccc;
+	justify-content: center;
+	align-items: center;
 }
 .card-list .card-bottom {
 	padding-top: 3.5px;
@@ -633,8 +638,8 @@ html, body {
 }
 .adc-detail .weui-grid__label span {
 	display: block;
-	width: 27px;
-	height: 27px;
+	width: 28px;
+	height: 28px;
 	margin: 3.5px auto;
 	line-height: 20px;
 	border-radius: 50%;
@@ -642,10 +647,10 @@ html, body {
 }
 .adc-detail .weui-grid__label em {
 	display: block;
-	width: 21px;
-	height: 21px;
+	width: 22px;
+	height: 22px;
 	margin: 3px auto;
-	line-height: 21px;
+	line-height: 22px;
 	border-radius: 50%;
 	font-style: normal;
 	overflow: hidden;
@@ -816,6 +821,9 @@ html, body {
 .adc-statistics.container {
 	padding-bottom: 10px;
 }
+.adc-statistics .card-list .card-top {
+	border-bottom: none;
+}
 /* ##考勤统计 */
 .adc-sigin-in .statistics-card {
 	margin: 10px 12px;
@@ -835,6 +843,7 @@ html, body {
 	font-size: 12px;
 }
 .adc-sigin-in .page__bd_spacing {
+	padding: 0;
 	overflow: hidden;
 }
 .adc-sigin-in .weui-progress {
