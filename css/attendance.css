@@ -164,7 +164,7 @@ html, body {
 	height: 65px;
 }
 .adc-total .dept-normal .record-item {
-	background: url(../img/normal-bg.png) no-repeat left bottom / 100% 100%;
+	background: #f4f9ff url(../img/normal-bg.png) no-repeat left bottom / 100% 100%;
 }
 .adc-total .dept-normal .record-info {
 	margin: 10.5px 0 0 15px;
@@ -203,31 +203,31 @@ html, body {
 	height: 37px;
 }
 .adc-total .record-late .record-item {
-	background: url(../img/late-bg.png) no-repeat left bottom / 100% 100%;
+	background: #fffbf8 url(../img/late-bg.png) no-repeat left bottom / 100% 100%;
 }
 .adc-total .record-late .record-num {
 	color: #F94B0E;
 }
 .adc-total .record-leave .record-item {
-	background: url(../img/leave-bg.png) no-repeat left bottom / 100% 100%;
+	background: #f1f6ff url(../img/leave-bg.png) no-repeat left bottom / 100% 100%;
 }
 .adc-total .record-leave .record-num {
 	color: #076AFF;
 }
 .adc-total .record-field .record-item {
-	background: url(../img/field-bg.png) no-repeat left bottom / 100% 100%;
+	background: #f9f9ff url(../img/field-bg.png) no-repeat left bottom / 100% 100%;
 }
 .adc-total .record-field .record-num {
 	color: #6164F8;
 }
 .adc-total .record-travel .record-item {
-	background: url(../img/travel-bg.png) no-repeat left bottom / 100% 100%;
+	background: #effcff url(../img/travel-bg.png) no-repeat left bottom / 100% 100%;
 }
 .adc-total .record-travel .record-num {
 	color: #49AFF4;
 }
 .adc-total .record-absence .record-item {
-	background: url(../img/absence-bg.png) no-repeat left bottom / 100% 100%;
+	background: #fef8f9 url(../img/absence-bg.png) no-repeat left bottom / 100% 100%;
 }
 .adc-total .record-absence .record-num {
 	color: #F4505D;
