@@ -2,12 +2,6 @@
 html, body {
 	font-family: "PingFang-SC-Medium";
 }
-/* body { 
-	padding-bottom: env(safe-area-inset-bottom);
-} */
-/* body {
-	  padding: constant(safe-area-inset-top) constant( safe-area-inset-right ) constant( safe-area-inset-bottom) constant( safe-area-inset-left);
-} */
 /* 人员卡片列表 */
 .card-list {
 	padding: 0 12px;
@@ -797,8 +791,8 @@ html, body {
 	color: #4378BE;
 }
 .adc-detail .weui-footer {
-	bottom: env(safe-area-inset-bottom);
-	height: 38px;
+	bottom: 0;
+	padding-bottom: env(safe-area-inset-bottom);
 	line-height: 38px;
 	color: #4378BE;
 	background: #fff;
